@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+.button-41 {
+  background-color:#6aabf2;
+  /* background-image: linear-gradient(-180deg, #00D775, #00BD68); */
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 44px;
+  line-height: 44px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 9;
+  border: 0;
+  margin-top: 20px;
+}
+
+.button-41:hover {
+  background: #105db3;
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+   
+    <title><%=title%></title>
+    <!-- <link rel="stylesheet" type="text/css" href="/css/login1.css">
+    <link rel="stylesheet" type="text/css" href="/css/login2.css"> -->
+    <link rel="stylesheet" href="/css/modal.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dev_sign.css">
+ 
+  
+</head>
+<body>
+    <header class="header-bar mb-3">
+        <div class="container d-flex flex-column flex-md-row align-items-center p-3">
+            <h4 class="my-0 mr-md-auto font-weight-bold"><a href="/" class="text-white">Sociade</a></h4>
+            <div class="flex-row my-3 my-md-0">
+                <!-- <a href="/users/search" class="text-white mr-2 header-search-icon" title="Search" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-search"></i></a> -->
+                <!-- <span class="text-white mr-2 header-chat-icon" title="Chat" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-comment"></i></span> -->
+                <a href="/users/profile/<%=user.id%>" class="mr-2"><img title="My Profile" data-toggle="tooltip" data-placement="bottom" style="width: 32px; height: 32px; border-radius: 16px;" src="<%=user.avatar%>"></a>
+                <!-- <a class="btn btn-sm btn-success mr-2" href="/users/postcreate">Create Post</a> -->
+                <!-- <a style="width: 80px !important;" href="#deposit" data-toggle="modal">Deposit</a> -->
+                <a class="btn btn-sm  mr-2" href="#deposit" data-toggle="modal">Create Post</a>
+                <form action="/users/logout" method="GET" class="d-inline">
+                    <button class="btn btn-sm ">Sign Out</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- body starts here-->
+    <div class="container py-md-5 container--narrow">
+        <!-- <h2 class="text-center mb-4">The Latest From Those You Follow</h2> -->
+        <div class="list-group pt-4">
+            <%if(feed.length>0){%>
+                <%for(feed of feed){%>
+                    <!-- <a href="/users/feed/<%=feed.id%>" class="list-group-item list-group-item-action mb-3">
+                        <img class="avatar-tiny" src="https://gravatar.com/avatar/f64fc44c03a8a7eb1d52502950879659?s=128">
+                        <strong><%=feed.title%></strong>
+                        <span class="text-muted small">by <%=feed.user.name%> on <%=feed.date%>
+                            <p class="pt-3"> <%=feed.likes.length%> Likes</p>
+                            <a href="/users/togglefeed/<%=feed.id%>" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-thumbs-up"></i></a>
+                        </span>
+                    </a> -->
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <!-- <a href="/users/feed/<%=feed.id%>"> -->
+                                <Strong><%=feed.content%></strong>
+                            
+                            <!-- <p class=""><%=feed.content%></p> -->
+                            <span class="pt-2">
+                                <%=feed.likes.length%> Likes
+                                <!--<a href="/users/postedit/<%=feed.id%>" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a> -->
+                                <!-- <form class="delete-post-form d-inline" action="/users/deletefeed/<%=feed.id%>" method="post">
+                                    <button class="delete-post-button text-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
+                                </form> -->
+                                <a href="/users/togglefeed/<%=feed.id%>" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Like"><i class="fas fa-thumbs-up"></i></a>
+                            
+                            </span>
+                        </div>
+                        <p class="text-muted small mb-6" style="margin: 0px !important;" >
+                            <a href="/users/profile/<%=feed.user.id%>"><img class="avatar-tiny" src="<%=feed.user.avatar%>"></a>
+                            <a href="/users/profile/<%=feed.user.id%>"><%=feed.user.name%></a> 
+                        </p>
+                        <p class="text-muted small" style="margin-bottom: 60px !important;">
+                            <!-- <a href="/users/profile/<%=feed.user.id%>"><img class="avatar-tiny" src="<%=feed.user.avatar%>"></a> -->
+                             <%=feed.date%>, <%=feed.time%> 
+                        </p>
+                       
+                    </div>      
+                   
+                
+                    
+                    
+    
+                <%}%>
+    
+                
+
+            <%}else{%>
+                  <h2 class="text-center mb-4">No feeds are available for display</h2>
+
+            <%}%>
+            
+        </div>
+    </div>
+
+    <div class="modal" id="deposit"
+    role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+
+       <div class="modal-dialog">
+           <div class="modal-content">
+
+               <!-- Modal root -->
+               <div class="m-header">
+                   <button class="close" data-dismiss="modal">
+                       ×
+                   </button>
+                   <h2 class="myModalLabel"></h2>
+               </div>
+               <form class="login100-form" action="/users/postcreate" method="POST">
+                   <!-- <span class="login100-form-title p-b-26">
+                       DEPOSIT
+                   </span> -->
+                 
+
+                   <!-- <div class="wrap-input100 validate-input">
+                       <input class="input100" type="text" inputmode="numeric" name="amount" required>
+                       <span class="focus-input100" data-placeholder="Amount" ></span>
+                   </div> -->
+
+                   <div class="wrap-input100 validate-input">
+                       <input style="margin-top:15px !important; border: none !important; border-bottom: 1px solid grey !important; width: 100% !important;" class="input100" type="text" name="content" placeholder="Write a Post" required>
+                       <!-- <span class="focus-input100" data-placeholder="Remark"></span> -->
+                   </div>
+
+                   <!-- <div class="container-login100-form-btn">
+                       <div class="wrap-login100-form-btn">
+                           <div class="login100-form-bgbtn"></div>
+                           <button class="login100-form-btn">
+                               Deposit
+                           </button>
+                       </div>
+                   </div> -->
+              
+                    <button class="button-41" role="button">Post</button>
+
+               </form>
+               
+         
+             
+
+           </div>
+       </div>
+   </div>
+
+    <!-- footer starts here-->
+    <footer class="border-top text-center small text-muted py-3">
+        <p style="font-weight: bold;" class="m-0">Copyright &copy; 2022 <a href="/" class="text-muted">Sociade</a>. All rights reserved.</p>
+    </footer>
+    <script>
+        $(document).ready(function() {
+            
+            /* Centering the modal vertically */
+            function alignModal() {
+                var modalDialog = $(this).find(".modal-dialog");
+                modalDialog.css("margin-top", Math.max(0, 
+                ($(window).height() - modalDialog.height()) / 2));
+            }
+            $(".modal").on("shown.bs.modal", alignModal);
+
+            /* Resizing the modal according the screen size */
+            $(window).on("resize", function() {
+                $(".modal:visible").each(alignModal);
+            });
+        });
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
+</body>
+</html>

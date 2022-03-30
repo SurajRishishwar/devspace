@@ -1,0 +1,39 @@
+.header-bar{
+    background-color: #6aabf2;
+    /* background-color: #292929; */
+}
+/* btn-primary */
+.btn{
+    color: white;
+    background-color: #105db3;
+}
+.btn:hover{
+    background-color: #94c3f6;
+}
+.input-dark{
+    background-color: #FBFCFC;
+    /* background-color: #444; */
+    border: transparent;
+    color: black;
+}
+
+.input-dark:focus{
+    color: black;
+    background-color: #FBFCFC;
+    /* background-color:rgb(85, 85, 85); */
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+}
+.container--narrow{
+    max-width: 732px;;
+}
+/* Home CSS */
+.avatar-tiny{
+    width: 24px;
+    height: 24px;
+    border-radius:12px;
+    margin-right: 4px;
+    position: relative;
+    top:-1px;
+}

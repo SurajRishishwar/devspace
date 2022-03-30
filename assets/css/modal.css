@@ -1,0 +1,58 @@
+/* body {
+    text-align: center;
+} */
+  
+/* Styling h1 tag */
+h1 {
+    color: green;
+    text-align: center;
+}
+  
+/* Styling modal */
+.modal .modal-content {
+    padding: 20px 20px 20px 20px;
+    -webkit-animation-name: modal-animation;
+    -webkit-animation-duration: 0.5s;
+    animation-name: modal-animation;
+    animation-duration: 0.5s;
+}
+  
+@-webkit-keyframes modal-animation {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+  
+@keyframes modal-animation {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+.modal-dialog{
+    /* align-items: center; */
+    text-align: center;
+}
+.wrap-input100{
+    padding: 5px;
+}
+.login100-form-title{
+    margin-bottom: 25px;
+}
+/* .login100-form{
+
+} */
+
+.login100-form-title{
+    font-size: 30px;
+    font-weight: bold;
+}
