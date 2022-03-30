@@ -5,7 +5,7 @@ const port= process.env.port || 8000;
 const db=require('./config/mongoose');
 const googlestt=require('./config/passport-google-oauth2-strategy');
 const passport = require('passport');
-const swal = require('sweetalert');
+
 
 
 
